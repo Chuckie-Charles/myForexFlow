@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMC Trading Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .sessions-container {
+    display: flex;
+    gap: 15px; /* Adds space between items */
+    flex-wrap: wrap; /* Ensures responsiveness */
+    background: #06a166;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #60ee9b;
+}
+
+.session-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+}
+        .container {
+
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .risk-box {
+            background: #ffebcd;
+            padding: 10px;
+            border-left: 5px solid #ff8c00;
+            margin-top: 10px;
+        }
+    
+        .check-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+}
+.pth{
+    text-align: center;
+    font-size: 16px;
+    color: rgb(27, 26, 27);
+    margin-bottom: 2px;
+}
+table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #ffcc99; /* Light orange */
+        }
+
+        th {
+            background: #00e6e6; /* Cyan header */
+            color: black;
+            font-weight: bold;
+            padding: 12px;
+            border: 2px solid black;
+        }
+
+        td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        td[contenteditable="true"] {
+            background: #fff8e1; /* Light yellow for editable cells */
+        }
+
+        .yes {
+            color: red;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .add-btn {
+            background: #653bc7;
+            color: white;
+        }
+
+        .save-btn {
+            background: #007bff;
+            color: white;
+        }
+
+        .delete-btn {
+            background: red;
+            color: white;
+        }
+.check-item input {
+    margin-left: 10px;
+}
+        .description {
+            font-size: 20px;
+            color: #1b29f1;
+            margin-bottom: 10px;
+        }
+        h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        img {
+            max-width: 100%;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: block;
+        }
+        .trade-history-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📈 SMC Trading Plan</h2>
+
+        <!-- Date & Time Selection -->
+        <div class="section">
+            <h3>🕒 Select Date & Time</h3>
+            <label for="tradeDateTime">Trade Date & Time</label>
+            <input type="datetime-local" id="tradeDateTime">
+        </div>
+         <!-- Trading Rules -->
+         <div class="section">
+            <h3>📌 Trading Rules</h3>
+            <p class="description">Follow these rules to maintain discipline and consistency.</p>
+            <ul>
+                <li>Trade only in London & New York sessions.<b style="color:#ee0ea3;">ie:11:00AM-8:00PM or 4:00PM-10:00PM</b></li>
+                <li>Enter after liquidity grab + order block tap.</li>
+                <li>Always use stop loss (1-2% per trade).</li>
+                <li>Follow minimum 1:3 risk-reward ratio.</li>
+                <li>Stop trading after 3 consecutive losses.</li>
+            </ul>
+        </div>
+        <!-- Risk Management -->
+        <div class="section">
+            <h3>⚠ Risk Management</h3>
+            <p class="description">Manage your risk to avoid major losses.</p>
+            <div class="risk-box">
+                <p><strong>Max Risk Per Trade:</strong> 1-2% of account balance</p>
+                <p><strong>Max Daily Drawdown:</strong> 5% (stop trading if hit)</p>
+                <p><strong>Take Profit Strategy:</strong> TP1 (Liquidity Zone), TP2 (Major Level)</p>
+            </div>
+        </div>
+   
+</div>
+
+    <h3>🕒 Sessions Checklist</h3>
+    <div class="sessions-container" id="session">
+        <label class="session-item">
+            <input type="radio" name="session" value="London"> London Session
+        </label>
+        <label class="session-item">
+            <input type="radio" name="session" value="New York"> New York Session
+        </label>
+        <label class="session-item">
+            <input type="radio" name="session" value="Asian"> Asian Session
+        </label>
+        <label class="session-item">
+            <input type="radio" name="session" value="Sydney"> Sydney Session
+        </label>
+    </div>
+</div>
+<h2>Account Tracker</h2>
+<p class="pth">Monitor your trading progress and update details daily</p>
+<table id="tradingTable">
+    <thead>
+        <tr>
+            <th>Day</th>
+            <th>Date</th>
+            <th>Starting Balance</th>
+            <th>Profit Target</th>
+            <th>Expected Balance</th>
+            <th>Lot Size</th>
+            <th>Achieved (Yes/No)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Rows will be loaded from localStorage -->
+    </tbody>
+</table>
+
+<button onclick="addRow()">➕ Add Row</button>
+<button onclick="saveData()">💾 Save Data</button>
+
+
+         <!-- Pre-Trading Checklist -->
+         <div class="section">
+            <h3>✅Pre-Trading Checklist</h3>
+            <p class="description">Check each item before entering a trade to ensure proper setup.</p>
+            <div class="checklist">
+                <label class="check-item"> Identify Market Structure (BOS/CHOCH) - Look for break of structure changes.<input type="checkbox"></label>
+                <label class="check-item"> Spot Order Block & Liquidity Grab - Confirm price manipulation.<input type="checkbox"></label>
+                <label class="check-item"> Wait for Confirmation (Rejection Candle) - Ensure strong price reaction.<input type="checkbox"></label>
+                <label class="check-item">Set Stop Loss & Take Profit - Plan risk-reward properly.<input type="checkbox"></label>
+                <label class="check-item"> Follow Risk Management Rules - Stick to the plan.<input type="checkbox"></label>
+                <label class="check-item"> News and Econimics Events<input type="checkbox"></label> 
+            </div>
+        </div>
+         <!-- Trading Checklist -->
+         <div class="section">
+            <h3>✅Trade Excecution checklist</h3>
+            <p class="description">Check each item before entering a trade to ensure proper setup.</p>
+            <div class="checklist">
+                <label class="check-item">Entry Confirmation (candle wick rejection or engulfing pattern)<input type="checkbox"></label>
+                <label for="entryType"> Entry type</label>
+                <select id="Entry type" unchecked>
+                    <option value="limit order">Limit order</option>
+                    <option value="limit order">Market excution</option>
+                     
+                </select>
+                <label>Lot size</label>
+                <input type="number" name="lot size"><br>
+                <label for="Emotion">Trade Entering Emotion</label>
+                <select id="Entry type" unchecked>
+                    <option value="with hestitation">Entry Hestitation</option>
+                    <option value="Without Hestitation">No Hestitation</option>
+                    <option value="Without Hestitation">No Trade Taken</option>
+                </select>
+                <label class="check-item"> Follow Risk Management Rules - Stick to the plan.<input type="checkbox"></label>
+            
+            </div>
+        </div>
+          <!--Management CheckList-->
+        <div class="section">
+            <h3>✅Trade Management Checklist</h3>
+            <p class="description">Check each item before entering a trade to ensure proper setup.</p>
+            <div class="checklist">
+                <label class="check-item"> Move Stoploss to break even after TP1 hit.<input type="checkbox"></label>
+                <label class="check-item"> secure partial profits at TP1<input type="checkbox"></label>
+                <label class="check-item"> Monitor Price Action For Reversal Signs<input type="checkbox"></label>
+                <label class="check-item"> No Emotions<input type="checkbox"></label>
+                <label class="check-item"> No revenge Trading<input type="checkbox"></label>
+                <label class="check-item">Follow Risk Management Rules - Stick to the plan.<input type="checkbox"></label> 
+            </div>
+          
+            <div class="section">
+                <h3>✅Trade Management Checklist</h3>
+                <p class="description">Check each item before entering a trade to ensure proper setup.</p>
+                <div class="input-group">
+                    <label class="check-item"> Trade Outcome Recorded.<input type="checkbox"></label>
+                    <label class="check-item"> Trade Screenshot Taken<input type="checkbox"></label>
+                    <label class="check-item"> Review Mistakes <input type="checkbox"></label>
+                    <label class="check-item"> Did you Follow The Trading Plan<input type="checkbox"></label>
+                    <label for="TradeReview">Trade Review</label>
+                    <textarea id="TradeReview" placeholder="How was the trade ..."></textarea>      
+                    <p class="description">Follow Risk Management Rules - Stick to the plan.</p> 
+                </div>
+      
+        <!-- Trade Journal -->
+        <div class="section">
+            <h3>📝 Trade Journal</h3>
+            <div class="input-group">
+                <label for="tradePair">Trade pair</label>
+                <select id="tradePair" unchecked>
+                    <option value="EUR/USD">EUR/USD</option>
+                    <option value="USD/JPY">USD/JPY</option>
+                    <option value="USD/CAD">USD/CAD</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="tradeType">Trade Type</label>
+                <input type="text" id="tradeType" placeholder="Buy or sell">
+            </div>
+            <div class="input-group">
+                <label for="entryPrice">Entry Price</label>
+                <input type="number" id="entryPrice">
+            </div>
+            <div class="input-group">
+                <label for="stopLoss">Stop Loss</label>
+                <input type="number" id="stopLoss">
+            </div>
+            <div class="input-group">
+                <label for="amountRisked">Amount Risked</label>
+                <input type="number" id="amountRisked" placeholder="less than 2% per trade eg:$0.50">
+            </div>
+            <div class="input-group">
+                <label for="takeProfit">Take Profit</label>
+                <input type="number" id="takeProfit">
+            </div>
+            <div class="input-group">
+                <label for="marketcondition">Market condition</label>
+                <textarea id="marketCondition" placeholder="what is the market condition ,trending,ranging..."></textarea>
+            
+            </div>
+           
+        </div>
+       
+        <!-- Screenshot Upload -->
+        <div class="section">
+            <h3>📷 Upload Screenshot</h3>
+            <input type="file" id="screenshotUpload" accept="image/*" onchange="previewImage()">
+            <img id="screenshotPreview" src="" alt="Screenshot Preview">
+        </div>
+        <div  class="input-group">
+            
+              <button onclick="saveTrade()">Save Trade</button>
+        </div>
+        
+        <!-- Trade History -->
+        <div class="section">
+            <h3>📂 Trade History</h3>
+            <div id="tradeHistory"></div>
+        </div>
+    </div>
+
+    <script>
+    
+    document.addEventListener("DOMContentLoaded", loadData);
+
+function addRow(day = "", date = "", startBal = 10, profit = 1, expBal = 15, lotSize = 0.01, achieved = "YES") {
+    let table = document.getElementById("tradingTable").getElementsByTagName('tbody')[0];
+    let rowCount = table.rows.length + 1; 
+
+    let row = table.insertRow();
+
+    row.innerHTML = `
+        <td>${day || rowCount}</td>
+        <td contenteditable="true">${date}</td>
+        <td><input type="number" value="${startBal}" step="1.0"></td>
+        <td><input type="number" value="${profit}" step="0.1"></td>
+        <td><input type="number" value="${expBal}" step=".2"></td>
+        <td><input type="number" value="${lotSize}" step="0.01"></td>
+        <td contenteditable="true">${achieved}</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">❌</button></td>
+    `;
+}
+
+function deleteRow(button) {
+    let row = button.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+    saveData();
+}
+
+function saveData() {
+    let table = document.getElementById("tradingTable").getElementsByTagName('tbody')[0];
+    let data = [];
+
+    for (let row of table.rows) {
+        let rowData = [];
+        let cells = row.cells;
+        
+        rowData.push(cells[0].innerText); // Day
+        rowData.push(cells[1].innerText); // Date
+        rowData.push(parseFloat(cells[2].querySelector("input").value)); // Starting Balance
+        rowData.push(parseFloat(cells[3].querySelector("input").value)); // Profit Target
+        rowData.push(parseFloat(cells[4].querySelector("input").value)); // Expected Balance
+        rowData.push(parseFloat(cells[5].querySelector("input").value)); // Lot Size
+        rowData.push(cells[6].innerText); // Achieved (Yes/No)
+        
+        data.push(rowData);
+    }
+
+    localStorage.setItem("tradingTableData", JSON.stringify(data));
+}
+
+function loadData() {
+    let savedData = localStorage.getItem("tradingTableData");
+    if (savedData) {
+        let rows = JSON.parse(savedData);
+        for (let row of rows) {
+            addRow(...row);
+        }
+    } else {
+        addRow(); 
+    }
+}
+            function saveTrade() {
+            let tradeDateTime = document.getElementById("tradeDateTime").value;
+            let tradePair = document.getElementById("tradePair").value;
+            let session= document.getElementById("session");
+            let entryPrice = document.getElementById("entryPrice").value;
+            let stopLoss = document.getElementById("stopLoss").value;
+            let takeProfit = document.getElementById("takeProfit").value;
+            let tradeNotes = document.getElementById("marketCondition").value;
+            let tradeType = document.getElementById("tradeType").value;
+            let amountRisked = document.getElementById("amountRisked").value;
+            let screenshotSrc = document.getElementById("screenshotPreview").src
+
+            if (!tradeDateTime || !session ||!tradePair || !entryPrice || !stopLoss || !takeProfit || !tradeType) {
+                alert("Please fill in all trade details.");
+                return;
+            }
+
+            let tradeData = {
+                dateTime: tradeDateTime,
+                pair: tradePair,
+                session:session,
+                entry: entryPrice,
+                stopLoss: stopLoss,
+                takeProfit: takeProfit,
+                notes: tradeNotes,
+                tradeType:tradeType,
+                amountRisked:amountRisked,
+                screenshot: screenshotSrc
+            };
+
+            let trades = JSON.parse(localStorage.getItem("trades")) || [];
+            trades.push(tradeData);
+            localStorage.setItem("trades", JSON.stringify(trades));
+
+            alert("Trade saved!");
+            displayTradeHistory();
+        }
+
+        function displayTradeHistory() {
+            let trades = JSON.parse(localStorage.getItem("trades")) || [];
+            let tradeHistoryDiv = document.getElementById("tradeHistory");
+            tradeHistoryDiv.innerHTML = "";
+
+            trades.forEach(trade => {
+                let tradeItem = document.createElement("div");
+                tradeItem.classList.add("trade-history-item");
+                tradeItem.innerHTML = `
+                    <strong>${trade.dateTime}</strong> -${trade.session} |Pair: ${trade.pair}|Trade Type: ${trade.tradeType}|Risked Amount: ${trade.amountRisked} | Entry: ${trade.entry} | SL: ${trade.stopLoss} | TP: ${trade.takeProfit}
+                    <br>Notes: ${trade.notes}
+                    <br><img src="${trade.screenshot}" alt="Trade Screenshot" style="max-width: 100%; margin-top: 10px;">
+                `;
+                tradeHistoryDiv.appendChild(tradeItem);
+            });
+        }
+
+        function previewImage() {
+            let file = document.getElementById("screenshotUpload").files[0];
+            let reader = new FileReader();
+            reader.onload = function(event) {
+                let img = document.getElementById("screenshotPreview");
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        window.onload = displayTradeHistory;
+    </script>
+</body>
+</html>

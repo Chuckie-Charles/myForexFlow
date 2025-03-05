@@ -1,0 +1,123 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://source.unsplash.com/1600x900/?coding,technology') no-repeat center center/cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* Blog Container */
+.blog-container {
+    width: 70%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-meta {
+    font-size: 14px;
+    color: #555;
+}
+
+.blog-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+/* Headings */
+h2 {
+    color: #007BFF;
+    border-left: 4px solid #007BFF;
+    padding-left: 10px;
+}
+
+h3 {
+    color: #333;
+}
+
+/* Quote Box */
+.quote-box {
+    background: #eef;
+    padding: 15px;
+    font-style: italic;
+    border-left: 5px solid #007BFF;
+    margin: 20px 0;
+}
+
+/* Comments Section */
+.comments-section {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 8px;
+}
+
+#comments-container {
+    margin-bottom: 15px;
+}
+
+.comment {
+    background: white;
+    padding: 8px;
+    border-left: 3px solid #007BFF;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+input {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    background: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blog-container {
+        width: 90%;
+    }
+    .hero {
+        height: 250px;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+}

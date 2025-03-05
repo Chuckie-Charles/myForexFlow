@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Position Size Calculator</title>
+    <link rel="stylesheet" href="position style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Forex Position Size Calculator</h2>
+        
+        <label for="balance">Account Balance ($):</label>
+        <input type="number" id="balance" placeholder="Enter account balance">
+
+        <label for="risk">Risk Percentage (%):</label>
+        <input type="number" id="risk" placeholder="Enter risk percentage">
+
+        <label for="stopLoss">Stop Loss (pips):</label>
+        <input type="number" id="stopLoss" placeholder="Enter stop loss in pips">
+
+        <label for="pair">Currency Pair:</label>
+        <select id="pair">
+            <option value="EUR/USD">EUR/USD</option>
+            <option value="GBP/USD">GBP/USD</option>
+            <option value="USD/JPY">USD/JPY</option>
+            <option value="USD/CAD">USD/CAD</option>
+            <option value="USD/CHF">USD/CHF</option>
+            <option value="AUD/USD">AUD/USD</option>
+        </select>
+
+        <button onclick="calculateLotSize()">Calculate</button>
+
+        <h3>Results:</h3>
+        <p>Risk Amount: <span id="riskAmount">$0.00</span></p>
+        <p>Recommended Lot Size: <span id="lotSize">0.00</span> lots</p>
+    </div>
+
+    <script src="positionjs2.js"></script>
+</body>
+</html>
