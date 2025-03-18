@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Risk Calculator</title>
+  <link rel="stylesheet" href="enhanced calculator css.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Enhanced Risk Calculator</h1>
+
+    <!-- Percentage Risk Calculator -->
+    <div class="calculator">
+      <h2>Percentage Risk Calculator</h2>
+      <label for="capital">Capital ($):</label>
+      <input type="number" id="capital" placeholder="Enter capital">
+      <label for="openPrice">Opening Price:</label>
+      <input type="number" id="openPrice" placeholder="Enter opening price">
+      <label for="stopLossPrice">Stop Loss Price:</label>
+      <input type="number" id="stopLossPrice" placeholder="Enter stop loss price">
+      <label for="lotSize">Lot Size:</label>
+      <input type="number" id="lotSize" placeholder="Enter lot size">
+      <button onclick="calculatePercentageRisk()">Calculate Percentage Risk</button>
+      <p id="percentageRiskResult"></p>
+    </div>
+
+    <!-- Risk Reward Ratio Calculator -->
+    <div class="calculator">
+      <h2>Risk Reward Ratio Calculator</h2>
+      <label for="openPriceRR">Open Price:</label>
+      <input type="number" id="openPriceRR" placeholder="Enter open price">
+      <label for="stopLossPriceRR">Stop Loss Price:</label>
+      <input type="number" id="stopLossPriceRR" placeholder="Enter stop loss price">
+      <label for="takeProfitPriceRR">Take Profit Price:</label>
+      <input type="number" id="takeProfitPriceRR" placeholder="Enter take profit price">
+      <label for="riskAmountRR">Risk Amount ($):</label>
+      <input type="number" id="riskAmountRR" placeholder="Enter risk amount">
+      <button onclick="calculateRiskRewardRatio()">Calculate Risk Reward Ratio</button>
+      <p id="riskRewardRatioResult"></p>
+    </div>
+
+    <!-- Pips Calculator -->
+    <div class="calculator">
+      <h2>Pips Calculator</h2>
+      <label for="price1">Price 1:</label>
+      <input type="number" id="price1" placeholder="Enter price 1">
+      <label for="price2">Price 2:</label>
+      <input type="number" id="price2" placeholder="Enter price 2">
+      <button onclick="calculatePips()">Calculate Pips</button>
+      <p id="pipsResult"></p>
+    </div>
+  </div>
+
+  <script src="enhanced calculator js.js"></script>
+</body>
+</html>
